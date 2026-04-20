@@ -31,7 +31,7 @@ export default function Home() {
 
   return (
     <div>
-
+      <h1>Katra Sterner</h1>
     </div>
   );
 }
