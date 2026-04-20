@@ -6,16 +6,19 @@ import { useState, useEffect } from "react";
 export default function Home() {
 
   // define stateful variables here
-  const [gallery, setGallery] = useState([]);
+  // const [gallery, setGallery] = useState([]);
 
   useEffect(() => {
     const url = 'https://api.artsearch.io/artworks/random';
     const key = process.env.NEXT_PUBLIC_API_KEY;
+    if (!key) {
+      throw new Error("Missing NEXT_PUBLIC_API_KEY");
+    }
 
     fetch(url, {
       method: 'GET',
       headers: {
-        'api-key': key!
+        "api-key": process.env.NEXT_PUBLIC_API_KEY ?? "",
       }
     })
     .then(response => {
